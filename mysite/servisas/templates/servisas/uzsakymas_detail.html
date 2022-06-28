@@ -1,0 +1,22 @@
+{% extends "servisas/base.html" %}
+{% load static %}
+{% block head%}
+    <style>
+    h1 {text-align: center;
+        font-style: oblique;}
+    </style>
+{% endblock head%}
+{% block title %}Uzsakymo detalizacija{% endblock title %}
+{% block content %}
+<h1>Uzsakymo ataskaita</h1>
+
+<br><br><br><br>
+
+            <h6 class="mb-0"></h6>
+
+              <h2>Uzsakymo {{uzsakymas.id}} detalizacija:<h2>
+                <div>Busena-{{uzsakymas.get_status_display}}</div>
+                <div>Suma-{{uzsakymas.suma}}</div>
+                <div>Data-{{uzsakymas.data}}</div>
+{% endblock %}
+

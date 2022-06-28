@@ -1,0 +1,21 @@
+{% extends "servisas/base.html" %}
+{% load static %}
+{% block head%}
+    <style>
+    h1 {text-align: center;
+        font-style: oblique;}
+    </style>
+{% endblock head%}
+{% block title %}Autmobiliu statistika{% endblock title %}
+{% block content %}
+<h1>Automobiliu ataskaita</h1>
+
+<br><br>
+
+          <h6 class="mb-0">Automobiliu kiekis: <h6>
+            <ol>
+          {% for automobilis in automobiliai %}
+            <li><a href="{% url 'automobilis' automobilis.id %}">{{automobilis}}</a><li>
+          {% endfor %}
+            </ol>
+{% endblock %}

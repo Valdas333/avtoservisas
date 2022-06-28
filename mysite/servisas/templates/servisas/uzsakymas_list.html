@@ -1,0 +1,19 @@
+{% extends "servisas/base.html" %}
+{% load static %}
+{% block head%}
+    <style>
+    h1 {text-align: center;
+        font-style: oblique;}
+    </style>
+{% endblock head%}
+{% block title %}Uzsakymu sarasas{% endblock title %}
+
+{% block content %}
+<h1>Serviso ataskaita</h1>
+
+        <h6>Automobiliu kiekis: {{uzsakymu_kiekis}} </h6>
+        {% for uzsakymas in uzsakymas_list %}
+        <li><a href="{{uzsakymas.pk}}">{{uzsakymas}}</a></li>
+        {% endfor %}
+
+{% endblock %}
