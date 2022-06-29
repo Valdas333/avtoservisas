@@ -10,7 +10,7 @@ class UzsakymoEilutesInline(admin.TabularInline):
 
 class UzsakymasAdmin(admin.ModelAdmin):
     # fields = ('data','suma')
-    list_display = ['automobilis_id', 'data', 'suma']
+    # list_display = ['automobilis_id', 'data', 'suma']
     # list_display_links = ('data', 'suma')
     # list_editable = ('suma', 'display_uzsakymas')
     inlines = [UzsakymoEilutesInline]

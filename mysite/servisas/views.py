@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from .models import *
 from django.views import generic
 from django.core.paginator import Paginator
-
+from django.db.models import Q
 # Create your views here.
 def home(request):
     return render(request, 'servisas/base.html')
@@ -12,7 +12,7 @@ def about(request):
     return render(request, 'servisas/about.html')
 
 def serviso_redirektas(request):
-    return HttpResponseRedirect('about/')
+    return HttpResponseRedirect('servisas/')
 
 def suma_sumarum(request):
     uzsakymu_kiekis = Uzsakymas.objects.all().count()
@@ -45,4 +45,7 @@ class UzsakymaiListVieW(generic.ListView):
 class UzsakymaiDetailView(generic.DetailView):
     model = Uzsakymas
     
-    
+def search(request):
+    query = request.GET.get('query')
+    search_results = Automobilis.objects.filter(Q(valstybinis_nr__icontains=query) | Q(vin_kodas__icontains=query) | Q(klientas__icontains=query) | Q(automobilio_modelis_id__modelis__icontains=query)) 
+    return render(request, 'servisas/search.html', {'automobiliai': search_results, 'query': query})
